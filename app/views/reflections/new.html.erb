@@ -1,0 +1,14 @@
+<h1>Your Daily Reflection</h1>
+
+<%= simple_form_for @reflection, html: {class: "form-horizontal"} do |f| %>
+  <div class='col-md-3'>
+  <%= f.input :answer1, :label => "What did you learn today?" %>
+  </div>
+  <div class='col-md-3 col-md-offset-1' >
+  <%= f.input :answer2, :label => "What did you do well today?" %>
+  </div>
+  <div class='col-md-3 col-md-offset-1'>
+  <%= f.input :answer3, :label => "What could you have done better today?" %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

@@ -13,7 +13,20 @@
 </head>
 <body>
 
-<%= yield %>
+<div class="container">
+  <a href="/">Home</a>
+  |
+  <a href="/about">About</a>
+  |
+  <%= link_to "Reflections", reflections_path %>
+  |
+  <%= link_to "Daily Reflection", new_reflection_path %>
+  |
+  <hr>
+  <%= flash[:notice] || flash[:alert] %>
+  <hr>
+  <%= yield %>
+</div>
 
 </body>
 </html>
