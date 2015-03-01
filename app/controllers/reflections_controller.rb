@@ -1,7 +1,7 @@
 class ReflectionsController < ApplicationController
 
   def index
-    @reflections = Reflection.order(:id)
+    @reflections = Reflection.all.order("created_at DESC")
   end
 
   def new
@@ -12,14 +12,34 @@ class ReflectionsController < ApplicationController
   def create
     @reflection = Reflection.new params.require(:reflection).permit(:answer1, :answer2, :answer3)
     if @reflection.save
-      redirect_to @reflection, notice: "Your reflection has been submitted."
+      redirect_to @reflection, notice: "Your reflection has been created."
     else
       render :new
     end
   end
 
+  def destroy
+    @reflection = Reflection.find params[:id]
+    @reflection.destroy
+    redirect_to reflections_path, notice: "Your Reflection was deleted."
+  end
+
   def show
     @reflection = Reflection.find params[:id]
   end
+
+  def edit
+    @reflection = Reflection.find params[:id]
+  end
+
+  def update
+    @reflection = Reflection.find params[:id]
+    if @reflection.update params.require(:reflection).permit(:answer1, :answer2, :answer3)
+      redirect_to @reflection, notice: "Your Reflection was updated."
+    else
+      render :edit, notice: "Your Reflection was not updated."
+    end
+  end
+
 
 end

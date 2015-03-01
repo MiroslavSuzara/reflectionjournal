@@ -15,7 +15,11 @@
                     <p>What did you do well today? <%= r.answer2 %></p>
                     <p>What could you have done better today? <%= r.answer3 %></p>
                   </div>
+              <div class="btn-group">
+                <%= link_to "Edit", edit_reflection_path(r), class: "btn btn-default" %> 
+                <%= link_to "Delete", reflection_path(r), method: :delete, data:{confirm: "Are you sure you want to delete this reflection?"}, class: "btn btn-default" %> 
               </div>
+            </div>
           </div>
       </div>
   </div>
