@@ -1,1 +1,22 @@
 <h1>These are your Daily Reflections</h1>
+
+<% @reflections.each do |r| %>
+  <div class="bs-example">
+      <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#<%= r.id %>"><%=formatted_date(r.created_at)%></a>
+                  </h4>
+              </div>
+              <div id="<%= r.id %>" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <p>What did you learn today? <%= r.answer1 %></p>
+                    <p>What did you do well today? <%= r.answer2 %></p>
+                    <p>What could you have done better today? <%= r.answer3 %></p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<% end %>

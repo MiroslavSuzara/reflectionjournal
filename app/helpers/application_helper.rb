@@ -1,7 +1,7 @@
 module ApplicationHelper
 
-  def standard_date(date)
-    date.strftime("%Y-%B-%d") if date
+  def formatted_date(date)
+    date.strftime("%B %d, %Y at %I:%M %p") if date
   end
   
 end
