@@ -14,6 +14,7 @@
                     <p>What did you learn today? <%= r.answer1 %></p>
                     <p>What did you do well today? <%= r.answer2 %></p>
                     <p>What could you have done better today? <%= r.answer3 %></p>
+                    <p>Created by: <%= r.user_first_name %></p>
                   </div>
               <div class="btn-group">
                 <%= link_to "Edit", edit_reflection_path(r), class: "btn btn-default" %> 

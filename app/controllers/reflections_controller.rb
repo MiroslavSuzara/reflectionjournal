@@ -12,6 +12,8 @@ class ReflectionsController < ApplicationController
 
   def create
     @reflection = Reflection.new params.require(:reflection).permit(:answer1, :answer2, :answer3)
+    @reflection.user = current_user     
+
     if @reflection.save
       redirect_to @reflection, notice: "Your reflection has been created."
     else
