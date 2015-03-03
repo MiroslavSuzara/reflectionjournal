@@ -5,6 +5,8 @@ class Reflection < ActiveRecord::Base
   
   belongs_to :user
 
+  has_many :comments, dependent: :destroy
+
   def user_first_name
     user.first_name if user
   end

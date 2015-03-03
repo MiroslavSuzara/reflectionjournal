@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   #if user is deleted, reflection is destroyed
   has_many :reflections, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def full_name
     if first_name || last_name
