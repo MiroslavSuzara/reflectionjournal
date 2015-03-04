@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reflectionjournal</title>
+  <title>Reflection Journal</title> 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,8 @@
 <!-- Latest compiled and minified JavaScript -->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="app/assets/javascripts/zabuto_calendar.min.js"></script>
+<link rel="stylesheet" type="text/css" href="app/assets/javascripts/zabuto_calendar.min.css">
 
 </head>
 <body>
@@ -17,6 +19,8 @@
   <a href="/">Home</a>
   |
   <a href="/about">About</a>
+  |
+  <a href="/calendar">Calendar</a>
   |
   <%= link_to "Reflections", reflections_path %>
   |
