@@ -29,6 +29,7 @@ class ReflectionsController < ApplicationController
 
   def show
     @reflection = Reflection.find params[:id]
+    @comments = @reflection.comments.order("created_at DESC")
   end
 
   def edit

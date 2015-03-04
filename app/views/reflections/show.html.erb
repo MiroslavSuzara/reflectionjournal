@@ -5,3 +5,22 @@
 <p>Created On: <%= formatted_date(@reflection.created_at) %></p>
 <p>Last Updated On: <%= formatted_date(@reflection.updated_at) %></p>
 <p>Created by: <%= @reflection.user_first_name %></p>
+
+<hr>
+
+<h2>Comments</h2>
+
+<%= simple_form_for [@reflection, (@comment || Comment.new)], html: {class: "form-horizontal"} do |f| %>
+  <div class="container">
+    <%= f.input :body, label: "What do you have to say about this?" %>
+  </div>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
+
+<% @comments.each do |comment| %>
+  <div class="well">
+    <p><%= comment.body %></p>
+    <p>Created by: <%= comment.user_first_name %> on <%=formatted_date(comment.created_at) %>
+    <%= link_to "Delete", reflection_comment_path(@reflection, comment), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-xs btn-danger"%></p>
+  </div>
+<% end %>

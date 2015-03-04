@@ -4,23 +4,21 @@ class CommentsController < ApplicationController
     @reflection = Reflection.find params[:reflection_id] 
     @comment = Comment.new comment_params
     @comment.reflection = @reflection
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to question_path(@comment.reflection), notice: "Comment added" }
-        format.js   { render }
-      else
-        format.js { render }
-      end
+    @comment.user = current_user
+      
+    if @comment.save
+      flash[:notice] = "Your Comment has been created!"
+      redirect_to @comment.reflection
+    else
+      flash[:notice] = "Please correct your errors below!"
+      redirect_to @comment.reflection
     end
   end
 
   def destroy
     @comment = Comment.find params[:id]
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to @comment.reflection, notice: "comment deleted!" }
-      format.js   { render }
-    end
+    redirect_to @comment.reflection, notice: "Your Comment was deleted!"
   end
 
   def index
@@ -30,7 +28,6 @@ class CommentsController < ApplicationController
   end
 
   def show
-    @comment = Comment.find params[:id]
   end
 
   private
